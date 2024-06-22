@@ -68,3 +68,6 @@ TestResult.xml
 .idea/
 
 doc/_site/
+
+# Mac
+.DS_Store
