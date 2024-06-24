@@ -13,6 +13,11 @@ namespace DotXxlJob.Core
     {
         public static IServiceCollection AddXxlJobExecutor(this IServiceCollection services,IConfiguration configuration)
         {
+            var conf = configuration.GetSection("xxlJob");
+            if (string.IsNullOrEmpty(conf["port"]))
+            {
+                conf["port"] = configuration.GetSection("Server")["Port"];
+            }
             services.AddLogging();
             services.AddOptions();
             services.Configure<XxlJobExecutorOptions>(configuration.GetSection("xxlJob"))
